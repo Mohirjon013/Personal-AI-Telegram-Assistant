@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import pool from "./database.js";
+import { startTelegram } from "./telegram.js";
+
 
 
 async function testConnection() {
@@ -18,3 +20,5 @@ async function testConnection() {
 console.log("🚀 Mohirjon AI is starting...");
 
 testConnection();
+
+await startTelegram()

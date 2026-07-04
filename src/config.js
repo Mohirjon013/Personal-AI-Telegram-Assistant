@@ -9,6 +9,10 @@ const config = {
         user:process.env.DB_USER,
         password:process.env.DB_PASSWORD,
         database:process.env.DB_NAME
+    },
+    telegram:{
+        apiId:Number(process.env.API_ID),
+        apiHash:process.env.API_HASH
     }
 };
 
