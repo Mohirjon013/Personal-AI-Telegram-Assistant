@@ -1,0 +1,12 @@
+{
+  "name": "mohirjon-ai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:dev": "nodemon src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

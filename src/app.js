@@ -1,0 +1,1 @@
+console.log("🚀 Mohirjon AI is starting...");
