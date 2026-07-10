@@ -18,7 +18,7 @@ async function testConnection() {
 }
 
 console.log("🚀 Mohirjon AI is starting...");
-
 testConnection();
+
 
 await startTelegram()

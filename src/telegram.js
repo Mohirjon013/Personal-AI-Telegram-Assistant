@@ -1,14 +1,16 @@
 import { TelegramClient} from "telegram"
-import { StringSession } from "telegram/sessions/index.js";
+import { StringSession } from "telegram/sessions/index.js"; // Bu login holatini saqlash uchun.
+import { NewMessage } from "telegram/events/NewMessage.js"; // telegramdan kelgan new xabarni etib turadi
+import { handleNewMessage } from "./handlers/message.handlers.js";
 import input from "input";
 import fs from "fs";
 import path from "path";
 
 import config from "./config.js";
 
-const sessionPath = path.join("sessions", "telegram.session");
-const savedSession = fs.existsSync(sessionPath) ? fs.readFileSync(sessionPath, "utf8") : "";
-const stringSession = new StringSession(savedSession);
+const sessionPath = path.join("sessions", "telegram.session"); // Session qaysi faylda saqlanishini aytyapmiz.
+const savedSession = fs.existsSync(sessionPath) ? fs.readFileSync(sessionPath, "utf8") : ""; // session bormi or not , agar bosa oqidi
+const stringSession = new StringSession(savedSession); // Bu yerda GramJS uchun session object yaratyapmiz.
 
 const client = new TelegramClient(
     stringSession,
@@ -37,6 +39,9 @@ export async function startTelegram(){
             console.log(error);   
         }
     })
+
+    client.addEventHandler(handleNewMessage,new NewMessage({})) // Qaysi eventlarni tinglash kerak?
+
     const session = client.session.save();
     
     fs.writeFileSync(sessionPath, session, "utf8");
