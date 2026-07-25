@@ -40,7 +40,7 @@ export async function startTelegram(){
         }
     })
 
-    client.addEventHandler(handleNewMessage,new NewMessage({})) // Qaysi eventlarni tinglash kerak?
+    client.addEventHandler(handleNewMessage,new NewMessage({})) 
 
     const session = client.session.save();
     
